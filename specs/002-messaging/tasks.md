@@ -1,35 +1,35 @@
 # Tasks: Real-Time Messaging Service
 
 ## Phase 1 — Project Scaffolding
-- [ ] Create `services/MessagingService` .NET 9 minimal API project
-- [ ] Add NuGet packages: EF Core 9, Npgsql, StackExchange.Redis
-- [ ] Configure PostgreSQL DbContext
-- [ ] Add Message entity + migrations
-- [ ] Add Dockerfile and docker-compose entry
+- [X] Create `services/MessagingService` .NET 9 minimal API project
+- [X] Add NuGet packages: EF Core 9, Npgsql, StackExchange.Redis
+- [X] Configure PostgreSQL DbContext
+- [X] Add Message entity + migrations
+- [X] Add Dockerfile and docker-compose entry
 
 ## Phase 2 — REST Endpoints
-- [ ] POST /channels/{channelId}/messages — create message, validate content
-- [ ] GET /channels/{channelId}/messages — cursor-based pagination
-- [ ] PUT /messages/{id} — edit (author check)
-- [ ] DELETE /messages/{id} — soft delete (author check)
-- [ ] Integration tests for all endpoints
+- [X] POST /channels/{channelId}/messages — create message, validate content
+- [X] GET /channels/{channelId}/messages — cursor-based pagination
+- [X] PUT /messages/{id} — edit (author check)
+- [X] DELETE /messages/{id} — soft delete (author check)
+- [X] Integration tests for all endpoints
 
 ## Phase 3 — Redis Pub/Sub
-- [ ] Implement `RedisPubSubService`: publish message event to Redis
-- [ ] Implement subscriber: listen to Redis, push to WebSocket manager
-- [ ] Unit test: publish → receive round-trip
+- [X] Implement `RedisPubSubService`: publish message event to Redis
+- [X] Implement subscriber: listen to Redis, push to WebSocket manager
+- [X] Unit test: publish → receive round-trip
 
 ## Phase 4 — WebSocket
-- [ ] Implement WebSocket upgrade endpoint at /ws
-- [ ] JWT auth on WebSocket connection (query param)
-- [ ] Implement `WebSocketManager`: register/unregister connections per channel
-- [ ] Fan-out: on Redis event, send to all subscribed WebSocket clients
-- [ ] Handle disconnect/reconnect gracefully
-- [ ] Integration test: connect, subscribe, send message, receive real-time event
+- [X] Implement WebSocket upgrade endpoint at /ws
+- [X] JWT auth on WebSocket connection (query param)
+- [X] Implement `WebSocketManager`: register/unregister connections per channel
+- [X] Fan-out: on Redis event, send to all subscribed WebSocket clients
+- [X] Handle disconnect/reconnect gracefully
+- [X] Integration test: connect, subscribe, send message, receive real-time event
 
 ## Phase 5 — Health & Docker
-- [ ] GET /health endpoint
-- [ ] Validate full flow in Docker Compose (REST + WebSocket + Redis)
+- [X] GET /health endpoint
+- [X] Validate full flow in Docker Compose (REST + WebSocket + Redis)
 
 ## Checkpoints
 - ✅ Phase 1: service boots, DB migrated

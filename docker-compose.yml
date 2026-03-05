@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: messaging_db
+      POSTGRES_USER: messaging_user
+      POSTGRES_PASSWORD: messaging_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U messaging_user -d messaging_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  messaging-service:
+    build: ./services/MessagingService
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_CONNECTION_STRING=Host=postgres;Database=messaging_db;Username=messaging_user;Password=messaging_pass
+      - REDIS_CONNECTION=redis:6379
+      - JWT_PUBLIC_KEY=${JWT_PUBLIC_KEY}
+      - JWT_ISSUER=speckit-chat
+      - ASPNETCORE_URLS=http://+:8081
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
