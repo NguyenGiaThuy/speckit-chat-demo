@@ -1,0 +1,58 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+
+## NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+## Build
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+publish/
+**/publish/
+
+## User-specific
+*.rsuser
+*.userosscache
+*.sln.docstates
+
+## Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+.coverage/
+
+## Logs
+*.log
+logs/
+
+## Secrets / env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+## Docker
+.dockerignore
+
+## IDE
+.vscode/
+.idea/
+
+## OS
+.DS_Store
+Thumbs.db
+*.tmp
